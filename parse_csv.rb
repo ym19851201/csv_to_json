@@ -52,12 +52,21 @@ class AccountDataBase
     end
   end
 
-  def get_account_at(index)
+  def account_at(index)
     @accounts[index]
   end
 
-  def get_accounts(key, value)
+  def accounts(key, value)
     @accounts.select {|e| eval "e.#{key} == value" }
+  end
+
+  def method_missing(name, *args)
+    if name.to_s =~ /accounts_(.+)_equal_to/
+      puts $1
+      accounts($1, args[0])
+    else
+      super
+    end
   end
 
   def to_json
