@@ -1,5 +1,5 @@
 class Account
-  attr_writer :attribute_hash
+  attr_accessor :attribute_hash
 
   def initialize(id)
     @id = id
@@ -56,14 +56,14 @@ class AccountDataBase
     @accounts[index]
   end
 
-  def accounts(key, value)
+  def accounts_that_have(key, value)
     @accounts.select {|e| eval "e.#{key} == value" }
   end
 
   def method_missing(name, *args)
     if name.to_s =~ /accounts_(.+)_equal_to/
       puts $1
-      accounts($1, args[0])
+      accounts_that_have($1, args[0])
     else
       super
     end
