@@ -18,20 +18,5 @@ class Account
   def to_s
     "ID: #{@id}, ATTRIBUTES: #{@attribute_hash}"
   end
-
-  def to_json
-    s = @attribute_hash.map do |k, v|
-      "\"#{k}\": \"#{v}\""
-    end
-    s.join(",\n")
-  end
-
-  def to_json_construct
-    "{\n#{indent(to_json, 2)}\n}"
-  end
-
-  def indent(s, level)
-    s.gsub(/^/, ' ' * level)
-  end
 end
 
