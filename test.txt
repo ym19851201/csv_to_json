@@ -1,4 +1,0 @@
-name,age,value
-miyazaki,28,value_miyazaki
-aso,50,value_aso
-moriya,35,value_moriya

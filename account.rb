@@ -1,5 +1,5 @@
 class Account
-  attr_writer :attribute_hash
+  attr_accessor :attribute_hash
 
   def initialize(id)
     @id = id

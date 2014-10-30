@@ -21,4 +21,3 @@ class CSVParser
     return accounts
   end
 end
-
