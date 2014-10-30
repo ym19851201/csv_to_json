@@ -28,6 +28,18 @@ open(file_path) do |file|
   name = STDIN.gets.chomp
 
   puts id, name ,data
-  puts Jsonizer::to_data_bag_json(id, name, data)
+  result = Jsonizer::to_data_bag_json(id, name, data)
+  puts result
+
+  puts "export to file? [y/N]"
+  yn = STDIN.gets
+  if yn[0].downcase == 'y'
+    require 'date'
+    d = DateTime.now
+    timestr = d.strftime "%Y%m%d%H%M%S"
+    open("./#{id}_#{name}_#{timestr}.json", "w") do |file|
+      file.puts result
+    end
+  end
 
 end
