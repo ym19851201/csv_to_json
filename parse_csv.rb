@@ -7,6 +7,7 @@ class CSVParser
 
   def parse
     accounts = []
+    @text.gsub!(/#.+\n/, "")
     @text.each_line.with_index do |line, i|
       unless i == 0
         account = Account.new(i - 1)
